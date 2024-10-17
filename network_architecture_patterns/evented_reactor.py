@@ -17,6 +17,7 @@ class Connection:
 
     def on_data(self, data):
         self.request += data.decode()
+        print(f"Received request: {self.request}")  # Debug line
         if self.request.endswith(CRLF):
             # Request is completed.
             response = self.handler.handle(self.request)
